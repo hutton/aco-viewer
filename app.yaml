@@ -1,5 +1,5 @@
-application: icsconvert
-version: 15
+application: aco-viewer
+version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
