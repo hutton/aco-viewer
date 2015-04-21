@@ -1,63 +1,8 @@
-- Improve View events link
-- HTML and PDF views to use preprocess
 
 *** Launch ***
-- .docx format
 
 Ideas
 -----
-- Show sample online
-- View item online
-- Email item
 
 Done
 ----
-- animate opening items view
-- Drop shadow on items view, borders on sections
-- Show 'more events' when uploading
-- What page
-- Stats page
-- Effect on hover over drop zone
-- Support link
-- Email errors
-- Manual file upload
-- Check pdf alternate background
-- Update filename when uploading
-- Remove google fonts link
-- Fix Safari download
-- Better file display
-- Pdf format
-- Titles in templates
-- rel="nofollow" on links
-- Fix xls order in regex
-- Use correct private stripe key
-- Check matching of filename and hash
-- Added header meta tags
-- Download progress
-- border-radius on .link-section-container
-- New file-type animations
-- .pdf format
-- Config settings
-- .txt format
-- .xml format
-- .html format
-- Add attendees to column order
-- Add analytics
-- Sensible download errors
-- Remove todos
-- Download logging
-- Handle big files
-- When paid show a message
-  - You Rock! Here's your files
-- Show filename during upload and progress
-- url: .*
-  script: main.app
-  secure: always
-- Remove paid and show_file class when uploading new
-- Increase section spacing, make backgrounds not so dark
-- Open sans
-- Better error handling of upload bug
-- Fix upload bug
-- File details styling
-- Paid vs. not paid styling, with don't pay more than once
-- Refactor upload to own file
