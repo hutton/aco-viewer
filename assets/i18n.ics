@@ -1,0 +1,44 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 12.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VEVENT
+CLASS:PUBLIC
+CREATED:20140829T130407Z
+DESCRIPTION:Veuillez noter que les horaires de cette réservation sont des 
+	heures locales. Votre application de gestion d'agenda ajuste automatiqueme
+	nt ces heures au fuseau horaire du calendrier.\n\nItinéraire: Nice 05/09/
+	2014.\n\n************\nVol : Tunisair TU 760\nDépart : Tunis Terminal M (
+	05/09/2014 08:50 heure locale)\nArrivée : Nice Terminal 2 (05/09/2014 11:
+	20 heure locale)\nN° de dossier : 2MT7FP\nNuméro de confirmation : 2MT7F
+	P\nVoyageurs : \n - Mme IKRAM IDOUDI\nAuteur : Mme MARIE GEORGE GROUSSET\n
+	Durée : 1h 30m\n\n
+DTEND:20140905T092000Z
+DTSTAMP:20140829T143009Z
+DTSTART:20140905T075000Z
+LAST-MODIFIED:20140829T130407Z
+LOCATION:Tunis Terminal M -> Nice Terminal 2
+SEQUENCE:0
+SUMMARY:Tunisair\, TU 760\, TUN 08:50 -> NCE 11:20
+TRANSP:OPAQUE
+UID:337973d0-adce-49eb-96eb-68dfa2e12bf7
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//E
+	N">\n<HTML>\n<HEAD>\n<META NAME="Generator" CONTENT="MS Exchange Server ve
+	rsion 08.00.0681.000">\n<TITLE></TITLE>\n</HEAD>\n<BODY>\n<!-- Converted f
+	rom text/plain format -->\n\n<P><FONT SIZE=2>Veuillez noter que les horair
+	es de cette réservation sont des heures locales. Votre application de ges
+	tion d'agenda ajuste automatiquement ces heures au fuseau horaire du calen
+	drier.</FONT></P>\n\n<P><FONT SIZE=2>Itinéraire: Nice 05/09/2014.</FONT>\
+	n</P>\n\n<P><FONT SIZE=2>************</FONT>\n\n<BR><FONT SIZE=2>Vol : Tun
+	isair TU 760</FONT>\n\n<BR><FONT SIZE=2>Départ : Tunis Terminal M (05/09/
+	2014 08:50 heure locale)</FONT>\n\n<BR><FONT SIZE=2>Arrivée : Nice Termin
+	al 2 (05/09/2014 11:20 heure locale)</FONT>\n\n<BR><FONT SIZE=2>N° de dos
+	sier : 2MT7FP</FONT>\n\n<BR><FONT SIZE=2>Numéro de confirmation : 2MT7FP<
+	/FONT>\n\n<BR><FONT SIZE=2>Voyageurs : </FONT>\n\n<BR><FONT SIZE=2>&nbsp\;
+	- Mme IKRAM IDOUDI</FONT>\n\n<BR><FONT SIZE=2>Auteur : Mme MARIE GEORGE GR
+	OUSSET</FONT>\n\n<BR><FONT SIZE=2>Durée : 1h 30m</FONT>\n</P>\n\n</BODY>\
+	n</HTML>
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+END:VEVENT
+END:VCALENDAR

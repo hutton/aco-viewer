@@ -1,0 +1,13 @@
+Events
+------
+{% for event in events %}{% if 'Summary' in event %}
+Summary:     {{ event.Summary }}{% endif %}{% if 'Description' in event %}
+Description: {{ event.Description }}{% endif %}{% if 'Start' in event %}
+Start:       {{ event.Start }}{% endif %}{% if 'End' in event %}
+End:         {{ event.End }}{% endif %}{% if 'Organizer' in event %}
+Organizer:   {{ event.Organizer }}{% endif %}{% if 'Attendees' in event %}
+Attendees:   {{ event.Attendees }}{% endif %}{% if 'Location' in event %}
+Location:    {{ event.Location }}{% endif %}{% if 'Created' in event %}
+Created:     {{ event.Created }}{% endif %}
+{% endfor %}
+

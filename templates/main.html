@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ACO Viewer - Free online ACO palette file viewer</title>
+    <meta name="description" content="A simple web service to view and convert ICS files.  Convert to loads of formats including CSV, XLSX, PDF, HTML, JSON & XML.">
+    <meta name="keywords"
+          content="ics viewer, ics converter, ics to csv, convert ics, ics, view ics, open ics, ics viewer, convert icalendar, icalendar to csv, ics to pdf, ics to xslx, ics to xsl, ics to xml, ics to html, ics to Excel">
+
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css" />
+    <link rel="shortcut icon" href="/static/images/32x32.png">
+</head>
+<body>
+    <div class="fixed-width" itemscope itemtype="http://schema.org/SoftwareApplication">
+        <div id="header-links">
+            <a class="header-link" href="mailto:icsconverter@gmail.com">Support</a>
+            <a class="header-link" href="/what-is-a-aco-file">What is a .aco file?</a>
+        </div>
+        <div id="header-title" itemprop="name">
+        ACO File Viewer
+        </div>
+        <meta itemprop="url" content="https://icsconvert.appspot.com/">
+        <div id="header-sub-title">
+            <div itemprop="description">
+            Instantly view and extract Adobe palette files
+            </div>
+        </div>
+    </div>
+    <div class="fixed-width" id="holder">
+        <div id="holder-drop-file" class="file-type blue big file-type-spin">
+            <div>
+                <span></span>
+                <p>.ACO</p>
+            </div>
+        </div>
+
+        <div id="holder-title">Drop file here
+        </div>
+        <div id="holder-title-upload-container">
+            <span>or click here to upload</span>
+            <input type="file" class="file-upload" />
+        </div>
+        <div id="file-upload-container" style="display: none;">
+            <div>Select a file</div>
+            <input class="file-upload" type="file"/>
+        </div>
+    </div>
+
+    <div class="fixed-width" id="status-panel" {% if not show_file %}style="display: none;"{% endif %}>
+        <div id="uploading-message" {% if show_file %}style="display: none;"{% endif %}>Uploading <span>{{ full_filename }}</span>
+            <div class='progress'>
+                <span style="width: 0%;"></span>
+            </div>
+        </div>
+        <div id="processing-message" {% if show_file %}style="display: none;"{% endif %}>Processing <span>{{ full_filename }}</span>
+            <div class='progress indefinite'>
+                <span></span>
+            </div>
+        </div>
+        <div id="file-upload-failed" style="display: none;">
+            <p>Opps!</p><p><br/><p><span id="file-upload-failed-message">There was a problem processing your file.</span></p><br/>Try another?</p>
+        </div>
+        <div id="file-message-container">
+            <div id="file-message">
+                <div id="file-message-file" class="file-type red">
+                    <div>
+                        <span></span>
+                        <p>.ICS</p>
+                    </div>
+                </div>
+                <div id="file-message-content">
+                    <div id="filename">{{ full_filename }}</div>
+                    <div id="event-count" {% if not event_count %}style="display: none;"{% endif %}>{{ event_count }} Event{{ event_count|pluralize }}</div>
+                </div>
+                <div id="view-items-link-container">
+                {% if event_count <= 10 %}
+                    {% if event_count == 1 %}
+                        <div id="view-items-link">View event »</div>
+                    {% else %}
+                        <div id="view-items-link">View events »</div>
+                    {% endif %}
+                {% else %}
+                    <div id="view-items-link">View first 10 events »</div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="fixed-width link-container {% if paid %}paid{% endif %} {% if show_file %}show_file{% endif %}">
+        <div id="link-container-header">Convert your ICS file to any of these formats.</div>
+        <div id="paid-title">You Rock! Here's your files.</div>
+        <div class="link-section-container" id="free-download-links">
+            <div class="title">Free</div>
+            <div class="content">
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.csv">
+                    <div class="file-type blue file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>CSV</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div id="free-download-footer" class="footer">Click to<br/>download</div>
+        </div>
+        <div class="link-section-container" id="paid-download-links">
+            <div class="title" id="not-paid-title">Get all these formats for <span class="underline">just $1</span></div>
+            <div class="content">
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.xlsx">
+                    <div class="file-type green file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>XLSX</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.html">
+                    <div class="file-type pink file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>HTML</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.xml">
+                    <div class="file-type yellow file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>XML</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.pdf">
+                    <div class="file-type red file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>PDF</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.json">
+                    <div class="file-type orange file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>JSON</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.txt">
+                    <div class="file-type brown file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>TXT</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.tsv">
+                    <div class="file-type green file-type-jump">
+                        <div>
+                            <span></span>
+                            <p>TSV</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="link-container-footer">Click to download</div>
+    </div>
+
+
+    <div class="hidden" id="items-view-background" style="display: none;">
+        <div id="items-view-background-inner">
+            <div id="items-view">
+                <div id="items-view-title">{{ items_view_title }}</div>
+                <div id="event-items-container">
+                    <div class="event-items">
+                    {% for event in events %}
+                        <div class="event">{% if 'Summary' in event %}
+                            <div>
+                                <div class="label">Summary</div><div class="content">{{ event.Summary|safe }}</div>
+                            </div>{% endif %}{% if 'Description' in event %}
+                            <div>
+                                <div class="label">Description</div><div class="content">{{ event.Description|safe }}</div>
+                            </div>{% endif %}{% if 'Start' in event %}
+                            <div>
+                                <div class="label">Start</div><div class="content">{{ event.Start }}</div>
+                            </div>{% endif %}{% if 'End' in event %}
+                            <div>
+                                <div class="label">End</div><div class="content">{{ event.End }}</div>
+                            </div>{% endif %}{% if 'Organizer' in event %}
+                            <div>
+                                <div class="label">Organizer</div><div class="content">{{ event.Organizer }}</div>
+                            </div>{% endif %}{% if 'Attendees' in event %}
+                            <div>
+                                <div class="label">Attendees</div><div class="content">{{ event.Attendees }}</div>
+                            </div>{% endif %}{% if 'Location' in event %}
+                            <div>
+                                <div class="label">Location</div><div class="content">{{ event.Location }}</div>
+                            </div>{% endif %}{% if 'Created' in event %}
+                            <div>
+                                <div class="label">Created</div><div class="content">{{ event.Created }}</div>
+                            </div>{% endif %}
+                        </div>{% endfor %}
+                    </div>
+                </div>
+                <div id="items-view-count" {% if event_count <= 10 %}style="display: none;"{% endif %}>{{ event_count_minus_ten }} more events</div>
+            </div>
+        </div>
+        <div id="items-view-close">
+            <div>
+                Click to close
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="items-view-template">
+        <% _.each(events, function(event){  %>
+        <div class="event">
+            <% if (!_.isUndefined(event['Summary'])) { %>
+            <div>
+                <div class="label">Summary</div><div class="content"><%= event['Summary'] %></div>
+            </div>
+            <% } %>
+            <% if (!_.isUndefined(event['Description'])) { %>
+            <div>
+                <div class="label">Description</div><div class="content"><%= event['Description'] %></div>
+            </div>
+            <% } %>
+            <% if (!_.isUndefined(event['Start'])) { %>
+            <div>
+                <div class="label">Start</div><div class="content"><%= event['Start'] %></div>
+            </div>
+            <% } %>
+            <% if (!_.isUndefined(event['End'])) { %>
+            <div>
+                <div class="label">End</div><div class="content"><%= event['End'] %></div>
+            </div>
+            <% } %>
+            <% if (!_.isUndefined(event['Organizer'])) { %>
+            <div>
+                <div class="label">Organizer</div><div class="content"><%= event['Organizer'] %></div>
+            </div>
+            <% } %>
+            <% if (!_.isUndefined(event['Attendees'])) { %>
+            <div>
+                <div class="label">Attendees</div><div class="content"><%= event['Attendees'] %></div>
+            </div>
+            <% } %>
+            <% if (!_.isUndefined(event['Location'])) { %>
+            <div>
+                <div class="label">Location</div><div class="content"><%= event['Location'] %></div>
+            </div>
+            <% } %>
+            <% if (!_.isUndefined(event['Created'])) { %>
+            <div>
+                <div class="label">Created</div><div class="content"><%= event['Created'] %></div>
+            </div>
+            <% } %>
+        </div><% }); %>
+    </script>
+
+
+
+    {% if web_debug %}
+    <script src="/static/javascript/tp/jquery-2.1.1.js" language="javascript" type="text/javascript"></script>
+    <script src="/static/javascript/tp/underscore.js" language="javascript" type="text/javascript"></script>
+    <script src="/static/javascript/tp/backbone.js" language="javascript" type="text/javascript"></script>
+    <script src="/static/javascript/tp/jquery.cookie.js" language="javascript" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/static/javascript/main.js"></script>
+    {% else %}
+    <script type="text/javascript" src="/static/javascript/all-min.js"></script>
+    {% endif %}
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-53976130-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+</body>
+</html>

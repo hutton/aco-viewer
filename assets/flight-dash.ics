@@ -1,0 +1,42 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//GDSX//COMPLEAT v2.7.39.0//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+CREATED:20140905T141840Z
+DTSTAMP:20140905T141840Z
+LAST-MODIFIED:20140905T141840Z
+SEQUENCE:0
+UID:7f9a0a81-9e14-47f4-9943-6159a3bba600
+LOCATION:Tegel Airport
+DESCRIPTION:Flight Number:  LH 194\nClass:  Economy / B\nDepart:
+   Frankfurt - Frankfurt International Airport\, Terminal 1\nArrive:
+   Berlin - Tegel Airport\nDepart:  Sunday\, 14 September 2014\,
+  17:45\nArrive:  Sunday\, 14 September 2014\, 18:55\nDuration:
+   1 hour(s) and 10 minute(s)\nLH Reference:  2ZUJW5 / Confirmed\nAmadeu
+ s Reference:  2ZUJW5\n\n\n<small><b><u>Please note:</b><br></u>\nTime
+ s displayed here are the local departure and arrival times.  When
+  transferred to your calendar they will be converted to the time
+  zone of your electronic device.</small>
+SUMMARY:Air Frankfurt (FRA) - Berlin (TXL)  LH 194 - 14 Sep
+CLASS:PUBLIC
+PRIORITY:5
+TRANSP:OPAQUE
+X-ALT-DESC;FMTTYPE=text/html:<HTML><body><table><tr><td><b><u>Flight
+  Number:</b></u></td><td>LH 194</td></tr><tr><td><b><u>Class:</b></u></td
+ ><td>Economy / B</td></tr><tr><td><b><u>Depart:</b></u></td><td>Frankfurt
+  - Frankfurt International Airport\, Terminal 1</td></tr><tr><td><b><u>Ar
+ rive:</b></u></td><td>Berlin - Tegel Airport</td></tr><tr><td><b><u>Depar
+ t:</b></u></td><td>Sunday\, 14 September 2014\, 17:45</td></tr><tr><td><b
+ ><u>Arrive:</b></u></td><td>Sunday\, 14 September 2014\, 18:55</td></tr><
+ tr><td><b><u>Duration:</b></u></td><td>1 hour(s) and 10 minute(s)</td></t
+ r><tr><td><b><u>LH Reference:</b></u></td><td>2ZUJW5 / Confirmed</td></tr
+ ><tr><td><b><u>Amadeus Reference:</b></u></td><td>2ZUJW5</td></tr><tr><td
+ ><br><br><small><b><u>Please note:</b><br></u>\nTimes displayed
+  here are the local departure and arrival times.  When transferred
+  to your calendar they will be converted to the time zone of your
+  electronic device.</small></td></tr></table></body></HTML>
+DTSTART:20140914T154500Z
+DURATION:PT1H10M
+END:VEVENT
+END:VCALENDAR

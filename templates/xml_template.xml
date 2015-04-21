@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<events>{% for event in events %}
+    <event>{% if 'Summary' in event %}
+        <summary>{{ event.Summary }}</summary>{% endif %}{% if 'Description' in event %}
+        <description>{{ event.Description }}</description>{% endif %}{% if 'Start' in event %}
+        <start>{{ event.Start }}</start>{% endif %}{% if 'End' in event %}
+        <end>{{ event.End }}</end>{% endif %}{% if 'Organizer' in event %}
+        <organizer>{{ event.Organizer }}</organizer>{% endif %}{% if 'Attendees' in event %}
+        <attendees>{{ event.Attendees }}</attendees>{% endif %}{% if 'Location' in event %}
+        <location>{{ event.Location }}</location>{% endif %}{% if 'Created' in event %}
+        <created>{{ event.Created }}</created>{% endif %}
+    </event>{% endfor %}
+</events>

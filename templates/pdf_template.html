@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ filename }}</title>
+
+    <style type="text/css">
+    * {
+        border:none;
+        margin:0;
+        padding:0;
+    }
+
+    body {
+    	font-family: Helvetica, sans-serif;
+    	margin: 20px;
+    }
+
+    .event{
+        background-color: #f0f0f0;
+    }
+
+    .event-even{
+        background-color: transparent;
+    }
+
+    .label{
+    	width: 140px;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+
+    .event-spacer{
+    }
+
+    .content{
+        padding-top: -17px;
+        padding-left: 130px;
+        padding-right: 10px;
+    }
+    </style>
+
+</head>
+<body>
+	<h1>{% if event_count > 1 %}{{ event_count }} Events{% endif %}</h1>
+    {% for event in events %}
+    <div class='event {% if forloop.counter|divisibleby:"2" %}event-even{% endif %}'>{% if 'Summary' in event %}
+        <div class="event-spacer">&nbsp;</div>
+        <div>
+			<div class="label">Summary</div><div class="content">{{ event.Summary|safe }}</div>
+        </div>{% endif %}{% if 'Description' in event %}
+        <div>
+			<div class="label">Description</div><div class="content">{{ event.Description|safe }}</div>
+        </div>{% endif %}{% if 'Start' in event %}
+        <div>
+			<div class="label">Start</div><div class="content">{{ event.Start }}</div>
+        </div>{% endif %}{% if 'End' in event %}
+        <div>
+			<div class="label">End</div><div class="content">{{ event.End }}</div>
+        </div>{% endif %}{% if 'Organizer' in event %}
+        <div>
+			<div class="label">Organizer</div><div class="content">{{ event.Organizer }}</div>
+        </div>{% endif %}{% if 'Attendees' in event %}
+        <div>
+			<div class="label">Attendees</div><div class="content">{{ event.Attendees }}</div>
+        </div>{% endif %}{% if 'Location' in event %}
+        <div>
+			<div class="label">Location</div><div class="content">{{ event.Location }}</div>
+        </div>{% endif %}{% if 'Created' in event %}
+        <div>
+			<div class="label">Created</div><div class="content">{{ event.Created }}</div>
+        </div>{% endif %}
+        <div class="event-spacer">&nbsp;</div>
+    </div>{% endfor %}
+</body>
+</html>

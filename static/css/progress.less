@@ -1,0 +1,32 @@
+.progress{
+    height: 2px;
+    background: rgba(0,0,0,0.05);
+    margin: 10px auto;
+    width: 300px;
+}
+
+.progress > span{
+    display: block;
+    height: 100%;
+    background: #4679BD;
+}
+
+.indefinite > span{
+    position: relative;
+    width: 10% !important;
+    -webkit-animation: myfirst linear 2s infinite;
+    animation: myfirst linear 2s infinite;
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+    0%   {left: 0%}
+    50%  {left: 90%}
+    100% {left: 0%}
+}
+
+@-webkit-keyframes myfirst {
+    0%   {left: 0%}
+    50%  {left: 90%}
+    100% {left: 0%}
+}

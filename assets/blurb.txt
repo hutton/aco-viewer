@@ -1,0 +1,11 @@
+What is an ICS file?
+ICS files are used to store calendar information.  Whenever you export your calendar from Google, Outlook, Lotus Notes or any other calendar provider they usually save it as an <a href="http://en.wikipedia.org/wiki/ICalendar">iCalendar</a> file which uses the extension .ics.
+
+
+
+Planes, Trains and Meetings
+ICS files are also used for meeting invites, flight itineraries, restaurant reservations and just about anything that can be booked online.  We can instantly convert them all to an easy readable format that suits you.
+
+
+
+https://icsconvert.appspot.com/ does a really good job of converting ICS to loads of formats (CSV, XML, JSON, HTML, PDF).

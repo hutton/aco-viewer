@@ -1,0 +1,105 @@
+
+@import "reset.less";
+@import "elements.less";
+@import "progress.less";
+
+@font-face {
+  font-family: 'Open Sans Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url('/static/fonts/opensans-light.wof') format('woff');
+}
+
+/********************* Globals ********************/
+
+body{
+    //font-family: Helvetica, "Trebuchet MS", sans-serif;
+
+    font-family: 'Open Sans Light', sans-serif;
+    font-size: 16px;
+}
+
+.fixed-width{
+    max-width: 800px;
+    margin: 0px auto;
+}
+
+.big-font{
+    font-size: 400%;
+}
+
+.medium-font{
+    font-size: 150%;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.center{
+    text-align: center;
+}
+
+h1{
+    font-size: 300%;
+}
+
+h2{
+    font-size: 200%;
+}
+
+h3{
+    font-size: 160%;
+    line-height: 1.8em;
+}
+
+h4{
+    font-size: 120%;
+    line-height: 1.8em;
+}
+
+@border-color: rgba(0,0,0,0.2);
+
+/*************************************************/
+
+#stats-loading{
+    font-size: 160%;
+    margin-top: 100px;
+    text-align: center;
+}
+
+#stats-loading .progress{
+    width: 180px;
+}
+
+.stat-title{
+    margin: 40px 20px 30px 20px;
+}
+
+.stat-section{
+    margin: 20px 20px;
+
+}
+.stat-section-title{
+    border-bottom: 1px solid @border-color;
+    font-size: 120%;
+}
+
+.stat-section-item{
+    display: inline-block;
+    padding: 10px 20px 10px 0px;
+    margin: 10px 20px 10px 0px;
+    text-align: right;
+    vertical-align: top;
+}
+
+.stat-section-item > div{
+    font-size: 160%;
+    line-height: 1.4em;
+}
+
+.stat-section-item > div:first-child{
+    text-align: left;
+    font-size: 160%;
+    line-height: 1.4em;
+}

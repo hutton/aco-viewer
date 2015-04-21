@@ -1,0 +1,535 @@
+
+@import "reset.less";
+@import "elements.less";
+@import "file-types.less";
+@import "progress.less";
+
+@font-face {
+  font-family: 'Open Sans Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url('/static/fonts/opensans-light.wof') format('woff');
+}
+
+/********************* Globals ********************/
+
+@section-margin: 50px;
+
+body{
+    //font-family: Helvetica, "Trebuchet MS", sans-serif;
+
+    font-family: 'Open Sans Light', sans-serif;
+    font-size: 16px;
+}
+
+.fixed-width{
+    max-width: 800px;
+    margin: 0px auto;
+}
+
+.big-font{
+    font-size: 400%;
+}
+
+.medium-font{
+    font-size: 150%;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.center{
+    text-align: center;
+}
+
+h1{
+    font-size: 300%;
+}
+
+h3{
+    margin-top: 20px;
+    font-size: 160%;
+    line-height: 1.8em;
+}
+
+h4{
+    margin-top: 20px;
+    font-size: 120%;
+    line-height: 1.8em;
+}
+
+/******************** What ************************/
+
+.text-section{
+    font-size: 120%;
+    line-height: 1.8em;
+
+    max-width: 600px;
+    margin: 60px auto 0px auto;
+}
+
+.text-section h3{
+    margin-bottom: 10px;
+}
+
+.text-section h4{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.text-section p{
+    margin-bottom: 10px;
+}
+
+/******************** Error ************************/
+
+#error-container{
+    margin-top: 100px;
+}
+
+#error-container h3{
+    margin-bottom: 30px;
+}
+/********************* Header ********************/
+
+#header-links{
+    margin: 10px;
+    text-align: center;
+}
+
+.header-link{
+    margin: 10px 20px;
+    color: #000000;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.header-link:hover{
+    text-decoration: underline;
+}
+
+#header-title{
+    .big-font;
+
+    text-align: center;
+    margin: 40px auto 10px auto;
+}
+
+#header-sub-title{
+    text-align: center;
+    font-size: 130%;
+    line-height: 1.4em;
+}
+
+#holder {
+    width: 300px;
+    height: 300px;
+    border: 5px rgba(0,0,0,0.2) dashed;
+    margin-top: 60px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.holder-hover{
+    border: 5px rgba(0,0,0,0.6) dashed !important;
+}
+
+#holder > .file-type{
+    margin-top: 25px;
+}
+
+#holder-title{
+    text-align: center;
+    margin: 10px auto 25px auto;
+    .medium-font;
+}
+
+#holder-title-upload-container{
+    display: inline-block;
+	position: relative;
+	overflow: hidden;
+}
+
+#holder-title-upload-container:hover{
+    text-decoration: underline;
+}
+
+#holder-title-upload-container input.file-upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+#file-upload-container{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+#file-upload-container > div{
+    .medium-font;
+}
+
+.hover{
+    border: 5px #8080ff dashed;
+}
+
+/********************* Status **********************/
+
+.status-messages{
+    .medium-font;
+}
+
+#processing-message{
+    .status-messages;
+}
+
+#processing-message > .progress{
+    width: 260px;
+}
+
+#uploading-message{
+    .status-messages;
+}
+
+#file-upload-failed{
+    .status-messages;
+    display: inline-block;
+    background: #fffccf;
+    padding: 20px;
+}
+
+#status-panel{
+    margin: @section-margin auto 0px auto;
+    text-align: center;
+}
+
+#file-message{
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#file-message-file{
+    float: left;
+}
+
+#file-message-content{
+    float: right;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 25px;
+}
+
+#filename{
+    .medium-font;
+    margin-bottom: 10px;
+
+    max-width: 460px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    vertical-align: middle;
+
+    line-height: 1.4em;
+}
+
+#view-items-link-container{
+    clear: both;
+}
+
+#view-items-link{
+    cursor: pointer;
+    margin-top: 15px;
+    padding: 10px 10px 0px 10px;
+    cursor: pointer;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    display: inline-block;
+}
+
+#view-items-link:hover{
+    text-decoration: underline;
+}
+
+/**************** Items view *******************/
+
+.radial_background{
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.4))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%); /* IE10+ */
+    background: radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%); /* W3C */
+    filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#66000000',GradientType=0 )"; /* IE6-9 */
+}
+
+
+#items-view-background{
+    position: fixed;
+    .radial_background;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    cursor: pointer;
+    opacity: 1.0;
+    .transition-duration(0.4s);
+}
+
+#items-view-background.hidden{
+    opacity: 0.0;
+}
+
+#items-view-background-inner{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+
+#items-view{
+    overflow-y: auto;
+    border: 1px solid rgba(0,0,0,0.35);
+    padding: 20px 0px;
+    border-radius: 10px;
+    text-align: left;
+    line-height: 1.5em;
+    background: white;
+    margin: 60px auto;
+    max-width: 800px;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.4);
+    .transition-duration(0.4s);
+    .scale(1.0);
+}
+
+#items-view-background.hidden #items-view{
+    .scale(0.7);
+}
+
+#items-view-title{
+    text-align: center;
+    .medium-font;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+#items-view .event{
+    margin: 10px 0px;
+    padding: 15px 50px;
+}
+
+#items-view .event > div{
+    padding: 4px 0px;
+}
+
+#items-view .event:nth-child(even){
+    background: rgba(0,0,0,0.03);
+    border-top: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+#items-view .label{
+    float: left;
+    display: inline-block;
+    font-weight: bold;
+}
+
+#items-view .content{
+    margin-left: 140px;
+    word-wrap: break-word;
+}
+
+#items-view-count{
+    text-align: center;
+    margin: 30px 0px 20px 0px;
+    .medium-font;
+}
+
+#items-view-close{
+    position: fixed;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#items-view-close > div{
+    display: inline-block;
+    background: #000000;
+    color: white;
+    border-radius: 40px;
+    padding: 6px 15px;
+    border: 2px white solid;
+    box-shadow: 0px 0px 5px #000000;
+}
+/********************* Links ***********************/
+#link-container-header{
+    .medium-font;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#paid-title{
+    display: none;
+    .medium-font;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@padding: 20px;
+
+.link-container{
+    margin-top: 80px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.link-section-container{
+    background: rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    margin: 0px 10px;
+    position: relative;
+}
+
+.link-section-container > .title{
+    .medium-font;
+    top: @padding;
+    width: 100%;
+    position: absolute;
+}
+
+.link-section-container > .content{
+    margin-top: 50px;
+    padding: 20px @padding;
+}
+
+.link-section-container > .footer{
+    display: none;
+    padding-bottom: @padding;
+}
+
+.download-link-container{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#free-download-links{
+    .download-link-container;
+
+}
+
+#paid-download-links{
+    .download-link-container;
+
+}
+
+.not-paid #paid-download-links .download-link{
+}
+
+.download-link{
+    margin: 0px 5px;
+    text-decoration: none;
+
+    pointer-events: none;
+}
+
+.disable-link{
+    pointer-events: none !important;
+}
+
+.link-container{
+}
+
+#link-container-footer{
+    display: none;
+    margin-top: 20px;
+}
+
+#never-pay-twice{
+    margin-top: 10px;
+}
+
+.file-progress{
+    font-size: 80%;
+    top: 10px;
+    position: relative;
+}
+
+/* Conditional */
+
+.show_file #free-download-links.link-section-container{
+    background: transparent;
+    border: none;
+}
+
+.show_file #free-download-links .download-link{
+    pointer-events: auto;
+}
+
+.show_file #free-download-links .title{
+    display: none;
+}
+
+.show_file #free-download-links .footer{
+    display: block;
+}
+
+.show_file #paid-download-links .footer{
+    display: block;
+}
+
+.show_file #link-container-header {
+    display: none;
+}
+
+.paid .link-section-container{
+    margin: 0px;
+}
+
+.paid #free-download-links .footer{
+    display: none;
+}
+
+.paid #paid-download-links .title{
+    display: none;
+}
+
+.paid #paid-download-links .footer{
+    display: none;
+}
+
+.paid .content{
+    margin-top: 0px;
+    padding: 0px;
+}
+
+.paid #paid-download-links .download-link{
+    pointer-events: auto;
+}
+
+.paid #paid-download-links.link-section-container{
+    background: transparent;
+    border: none;
+}
+
+.paid #link-container-footer{
+    display: block;
+}
+
+.paid #paid-title{
+    display: block;
+}
+
+
+
