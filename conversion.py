@@ -1,11 +1,13 @@
 import sys
+from palette_reader import process_aco
+
 sys.path.insert(0, 'libs')
 
 from google.appengine.ext import ndb
 
 from google.appengine.ext import blobstore
 
-from helper import process_aco, process_colors
+from helper import process_colors
 
 __author__ = 'simonhutton'
 
@@ -21,7 +23,6 @@ class Conversion(ndb.Model):
     created_date = ndb.DateTimeProperty(auto_now_add=True)
     filename = ndb.StringProperty()
     file_size = ndb.IntegerProperty()
-    full_filename = ndb.StringProperty()
     color_count = ndb.IntegerProperty()
     todo_count = ndb.IntegerProperty()
 

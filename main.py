@@ -48,16 +48,19 @@ def get_conversion_from_hash(file_hash):
 
 class Home(webapp2.RequestHandler):
     def get(self):
-
         config = Configuration.get_instance()
 
-        example_palette = [{'name': 'blue',
-                            'hex': ''}]
+        example_palette = [{"name": "Sugar Hearts You", "hex": "#fe4365", "safeName": "sugar-hearts-you"},
+                           {"name": "Party Confetti", "hex": "#fc9d9a", "safeName": "party-confetti"},
+                           {"name": "Sugar Champagne", "hex": "#f9cdad", "safeName": "sugar-champagne"},
+                           {"name": "Bursts Of Euphoria", "hex": "#c8c8a9", "safeName": "bursts-of-euphoria"},
+                           {"name": "Happy Balloons", "hex": "#83af9b", "safeName": "happy-balloons"}]
 
         path = os.path.join(os.path.join(os.path.dirname(__file__), 'html'), '../templates/main.html')
         self.response.out.write(template.render(path, {'show_file': False,
-                                                       'stripe_key': config.public_stripe_key,
-                                                       'web_debug': config.web_debug}))
+                                                       'web_debug': config.web_debug,
+                                                       'palette': simplejson.dumps({'filename': 'Example.aco',
+                                                                                    'colors': example_palette})}))
 
 
 class ShowFile(webapp2.RequestHandler):
@@ -75,17 +78,17 @@ class ShowFile(webapp2.RequestHandler):
             current_conversion = get_conversion_from_hash(file_hash)
 
             if current_conversion:
-
                 path = os.path.join(os.path.join(os.path.dirname(__file__), 'html'), '../templates/main.html')
 
-                palette = current_conversion.get_palette()
+                colors = current_conversion.get_palette()
 
                 self.response.out.write(template.render(path, {'show_file': True,
-                                                                'key': current_conversion.hash,
-                                                                'filename': current_conversion.filename,
-                                                                'full_filename': current_conversion.full_filename,
-                                                                'palette': palette,
-                                                                'web_debug': config.web_debug}))
+                                                               'key': current_conversion.hash,
+                                                               'filename': current_conversion.filename,
+                                                               'palette': simplejson.dumps(
+                                                                   {'filename': current_conversion.filename,
+                                                                    'colors': colors}),
+                                                               'web_debug': config.web_debug}))
                 return
 
         path = os.path.join(os.path.join(os.path.dirname(__file__), 'html'), '../templates/error.html')
@@ -95,11 +98,8 @@ class ShowFile(webapp2.RequestHandler):
         self.response.status = 404
 
 
-
-
 class What(webapp2.RequestHandler):
     def get(self):
-
         path = os.path.join(os.path.join(os.path.dirname(__file__), 'html'), '../templates/what.html')
         self.response.out.write(template.render(path, {}))
 
@@ -107,7 +107,7 @@ class What(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([('/', Home),
                                ('/upload', upload.Upload),
                                ('/download/.*', downloading.Downloading),
-                               ('/what-is-a-ics-file', What),
+                               ('/what-is-a-aco-file', What),
                                ('/statistics', statistics.Statistics),
                                ('/statistics-data', statistics.StatisticsData),
                                ('/.*', ShowFile)], debug=True)

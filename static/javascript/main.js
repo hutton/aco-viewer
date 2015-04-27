@@ -88,6 +88,10 @@ window.App = Backbone.View.extend({
 
     itemsViewTitle: $('#items-view-title'),
 
+    paletteContainerEl: $('#palette-container'),
+
+    paletteViewTemplate: _.template($('#palette-view-template').html()),
+
     el: $("body"),
 
     events: {
@@ -111,8 +115,6 @@ window.App = Backbone.View.extend({
 
         for (var i = 0; i < files.length; i++) {
             formData.append('file', files[i]);
-
-            this.setFileInfo({'full_filename': files[i].name});
         }
 
         this.showUploading();
@@ -136,14 +138,9 @@ window.App = Backbone.View.extend({
                 var response = jQuery.parseJSON(data);
 
                 if (response.key != null) {
-                    that.currentPaid = response.paid;
-
-                    that.showDownloadLinks(response.key, response.filename);
-                    that.setFileInfo(response);
-
                     that.Routes.navigate(response.key, {trigger: true});
 
-                    that.viewEvents();
+                    that.setPalette(response.palette);
 
                     // that.showFileStatus();
                 }
@@ -167,18 +164,10 @@ window.App = Backbone.View.extend({
         }
     },
 
-    showDownloadLinks: function(key, filename){
-        this.downloadLinks.each(function(index, element){
-            var el = $(element);
+    setPalette: function(palette){
+        this.paletteContainerEl.empty();
 
-            var split = el.attr("href").split(".");
-
-            var extension = split[split.length - 1];
-
-            $('input[type=hidden]').val(key);
-
-            el.attr("href", "/download/" + key + "/" + filename + "." + extension);
-        });
+        this.paletteContainerEl.html(this.paletteViewTemplate(palette));
     },
 
     clearFile: function(){
@@ -237,48 +226,6 @@ window.App = Backbone.View.extend({
         $('#file-upload-failed-message').html(message);
     },
 
-    setFileInfo: function(convertionInfo){
-        this.uploadingMessage.find('> span').html(convertionInfo.full_filename);
-        this.processingMessage.find('> span').html(convertionInfo.full_filename);
-
-        this.fileMessage.find('#filename').html(convertionInfo.full_filename);
-
-        this.itemsViewCount.hide();
-        this.itemsViewTitle.hide();
-
-        if (_.isUndefined(convertionInfo.event_count) && convertionInfo.event_count > 0){
-            this.fileMessage.find('#event-count').hide();
-        } else {
-            this.fileMessage.find('#event-count').show();
-
-            if (convertionInfo.event_count == 1 ){
-                this.fileMessage.find('#event-count').html(convertionInfo.event_count + " Event");
-                this.viewItemsLink.html('View event »');
-            } else {
-                this.fileMessage.find('#event-count').html(convertionInfo.event_count + " Events");
-
-                if (convertionInfo.event_count <= 10 ){
-                    this.viewItemsLink.html('View events »');
-                } else {
-                    this.itemsViewTitle.show();
-                    this.itemsViewTitle.html('First 10 of ' + convertionInfo.event_count + ' Events');
-
-                    this.viewItemsLink.html('View first 10 events »');
-
-                    this.itemsViewCount.show();
-                    this.itemsViewCount.html(convertionInfo.event_count - 10 + ' more events');
-                }
-            }
-
-        }
-
-        if (!_.isUndefined(convertionInfo.events)){
-            var itemsView = new ItemsView({model: convertionInfo.events})
-
-            this.itemsViewContainer.append(itemsView.el);
-        }
-    },
-
     downloadStart: function(event){
         var that = this;
 
@@ -335,46 +282,8 @@ window.App = Backbone.View.extend({
 
             $.removeCookie(downloadId);
         }
-    },
-
-    viewEvents: function(){
-        var that = this;
-        this.itemsViewBackground.show();
-
-        this.itemsViewBackground.scrollTop(0);
-
-        _.delay(function(){
-            that.itemsViewBackground.removeClass('hidden');
-        }, 10);
-    },
-
-    hideEvents: function(){
-        var that = this;
-
-        this.itemsViewBackground.addClass('hidden');
-
-        _.delay(function(){
-            that.itemsViewBackground.hide();
-        }, 400);
     }
 });
-
-window.ItemsView = Backbone.View.extend({
-    initialize: function () {
-        this.render();
-    },
-
-    template: _.template($('#items-view-template').html()),
-
-    render: function(){
-        this.$el.html(this.template({'events':this.model}));
-
-        return this;
-    },
-
-    className: 'event-item'
-});
-
 
 window.Workspace = Backbone.Router.extend({
 
@@ -390,12 +299,4 @@ window.Workspace = Backbone.Router.extend({
     showFile: function() {
         App.showFileStatus();
     }
-});
-
-$(document).ready(function () {
-    window.App = new App();
-
-    window.App.Routes = new Workspace();
-
-    Backbone.history.start({pushState: true});
 });

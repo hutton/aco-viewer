@@ -85,7 +85,7 @@ def log_upload(current_conversion, time):
 
     new_upload.download = False
     new_upload.hash = current_conversion.hash
-    new_upload.filename = current_conversion.full_filename
+    new_upload.filename = current_conversion.filename
     new_upload.file_size = current_conversion.file_size
     new_upload.time = time
 
@@ -97,7 +97,7 @@ def log_download(current_conversion, time, extension):
 
     new_download.download = True
     new_download.hash = current_conversion.hash
-    new_download.filename = current_conversion.full_filename
+    new_download.filename = current_conversion.filename
     new_download.file_size = current_conversion.file_size
     new_download.time = time
     new_download.extension = extension
@@ -136,9 +136,16 @@ def format_events_for_txt(events):
     return events
 
 
-def process_aco(file):
-    return None
+def make_safe_name(name):
+    return name.replace(" ", "_").lower()
 
 
-def process_colors(colors):
-    return None
+def process_colors(swatches):
+    palette = []
+
+    for swatch in swatches:
+        palette.append({'name': swatch.name,
+                        'safeName': make_safe_name(swatch.name),
+                        'hex': swatch.getRGB()})
+
+    return palette
