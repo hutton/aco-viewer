@@ -6,7 +6,7 @@ import time
 import traceback
 from google.appengine.api import memcache
 from google.appengine.runtime import DeadlineExceededError
-from helper import process_calendar, log_download, support_email, format_events_for_html, format_events_for_txt
+from helper import log_download, support_email
 
 sys.path.insert(0, 'libs')
 

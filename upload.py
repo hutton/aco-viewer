@@ -25,15 +25,6 @@ import traceback
 import io
 
 
-def drop_extension_from_filename(filename):
-    sp = filename.split('.')
-
-    if len(sp) > 1:
-        return string.join(sp[:-1], '.')
-    else:
-        return filename
-
-
 class Upload(webapp2.RequestHandler):
     @staticmethod
     def get_conversion_from_hash(file_hash):
@@ -107,8 +98,6 @@ class Upload(webapp2.RequestHandler):
 
                         self.response.status = 500
                 else:
-                    filename = drop_extension_from_filename(filename)
-
                     if current_conversion.filename != filename:
                         current_conversion.filename = filename
 

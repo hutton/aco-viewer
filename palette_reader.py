@@ -24,7 +24,7 @@ class ColorSwatch():
 
     def getRGB(self):
         rgb8bit = map(lambda a: a / 256, self.rawdata[1:4])
-        return "#{0:x}{1:x}{2:x}".format(*rgb8bit, **self.__dict__)
+        return "#{0:02x}{1:02x}{2:02x}".format(*rgb8bit, **self.__dict__)
 
     def __strCMYK(self):
         rgb8bit = map(lambda a: (65535 - a) / 655.35, self.rawdata[1:])

@@ -20,7 +20,6 @@ import sys
 import datetime
 import re
 from configuration import Configuration
-from helper import format_events_for_html
 import statistics
 
 import upload
@@ -59,7 +58,7 @@ class Home(webapp2.RequestHandler):
         path = os.path.join(os.path.join(os.path.dirname(__file__), 'html'), '../templates/main.html')
         self.response.out.write(template.render(path, {'show_file': False,
                                                        'web_debug': config.web_debug,
-                                                       'palette': simplejson.dumps({'filename': 'Example.aco',
+                                                       'palette': simplejson.dumps({'filename': 'Example from <a href="http://www.colourlovers.com/palettes/most-loved/all-time/meta">ColourLovers.com</a>',
                                                                                     'colors': example_palette})}))
 
 

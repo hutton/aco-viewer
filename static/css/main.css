@@ -701,10 +701,9 @@ h4 {
   font-size: 150%;
   top: 20px;
   width: 100%;
-  position: absolute;
+  margin-top: 20px;
 }
 .link-section-container > .content {
-  margin-top: 20px;
   padding: 20px 20px;
 }
 .link-section-container > .footer {
@@ -727,6 +726,7 @@ h4 {
 .colors-css-container {
   width: 50%;
   float: right;
+  margin-bottom: 20px;
 }
 .color {
   width: 70px;
@@ -748,11 +748,15 @@ h4 {
   height: 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   display: inline-block;
+  float: left;
 }
-.color-block-text {
-  margin-left: 10px;
-  position: relative;
-  top: -9px;
+.color-block-text-container {
+  margin-left: 45px;
+}
+.color-block-hex-text {
+  font-size: 90%;
+  line-height: 2.0em;
+  font-family: monospace;
 }
 .color:hover {
   width: 100px;
@@ -799,51 +803,3 @@ h4 {
   position: relative;
 }
 /* Conditional */
-.show_file #free-download-links.link-section-container {
-  background: transparent;
-  border: none;
-}
-.show_file #free-download-links .download-link {
-  pointer-events: auto;
-}
-.show_file #free-download-links .title {
-  display: none;
-}
-.show_file #free-download-links .footer {
-  display: block;
-}
-.show_file #paid-download-links .footer {
-  display: block;
-}
-.show_file #link-container-header {
-  display: none;
-}
-.paid .link-section-container {
-  margin: 0px;
-}
-.paid #free-download-links .footer {
-  display: none;
-}
-.paid #paid-download-links .title {
-  display: none;
-}
-.paid #paid-download-links .footer {
-  display: none;
-}
-.paid .content {
-  margin-top: 0px;
-  padding: 0px;
-}
-.paid #paid-download-links .download-link {
-  pointer-events: auto;
-}
-.paid #paid-download-links.link-section-container {
-  background: transparent;
-  border: none;
-}
-.paid #link-container-footer {
-  display: block;
-}
-.paid #paid-title {
-  display: block;
-}

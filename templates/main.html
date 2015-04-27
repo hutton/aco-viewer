@@ -63,8 +63,7 @@
 
     </div>
 
-    <div class="fixed-width link-container {% if paid %}paid{% endif %} {% if show_file %}show_file{% endif %}">
-        <div id="link-container-header">Instantly extract the colors from any ACO file.</div>
+    <div class="fixed-width link-container">
         <div id="palette-container"></div>
     </div>
 
@@ -81,47 +80,38 @@
                     <div class="section-title">Colors</div>
                     <% for (color in colors){ %>
                         <div class="color-block-container">
-                        <span class="color-block" style='background: <%= colors[color].hex %>'></span><span class="color-block-text"><%= colors[color].name %></span>
+                            <span class="color-block" style='background: <%= colors[color].hex %>'></span>
+                            <div class="color-block-text-container">
+                                <span class="color-block-text"><%= colors[color].name %></span><br/>
+                                <span class="color-block-hex-text"><%= colors[color].hex %></span>
+                            </div>
                         </div>
                     <% } %>
                 </div>
                 <div class="colors-css-container">
-                    <div class="section-title">Code</div>
+                    <div class="section-title">Stylesheet</div>
                     <div class="code-view">
-                    <span class="bold">/* CSS */</span><br/>
-                    <% for (color in colors){ %>
-                        <span>.<%= colors[color].safeName %>{</span><br/>
-                            <span>&nbsp;&nbsp;&nbsp;&nbsp;background: <%= colors[color].hex %>;</span><br/>
-                        <span>}</span><br/>
-                    <% } %>
-                    <br/>
-                    <span class="bold">/* LESS */</span><br/>
-                    <% for (color in colors){ %>
-                        <span>@<%= colors[color].safeName %>: <%= colors[color].hex %>;</span><br/>
-                    <% } %>
+                        <span class="bold">/* CSS */</span><br/>
+                        <% for (color in colors){ %>
+                            <span>.<%= colors[color].safeName %>{</span><br/>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;background: <%= colors[color].hex %>;</span><br/>
+                            <span>}</span><br/>
+                        <% } %>
+                        <br/>
+                        <span class="bold">/* SASS */</span><br/>
+                        <% for (color in colors){ %>
+                            <span>$<%= colors[color].safeName %>: <%= colors[color].hex %>;</span><br/>
+                        <% } %>
 
+                        <br/>
+                        <span class="bold">/* LESS */</span><br/>
+                        <% for (color in colors){ %>
+                            <span>@<%= colors[color].safeName %>: <%= colors[color].hex %>;</span><br/>
+                        <% } %>
                     </div>
                 </div>
             </div>
             <div class="break"></div>
-            <div class="content">
-                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.xlsx">
-                    <div class="file-type green file-type-jump">
-                        <div>
-                            <span></span>
-                            <p>CSS</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="download-link" rel="nofollow" href="/download/{{ key|default:'sample' }}/{{ filename|default:'sample' }}.html">
-                    <div class="file-type red file-type-jump">
-                        <div>
-                            <span></span>
-                            <p>HTML</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
     </script>
 
@@ -155,7 +145,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-53976130-1', 'auto');
+      ga('create', 'UA-62320842-1', 'auto');
       ga('send', 'pageview');
 
     </script>
