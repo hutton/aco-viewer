@@ -28,7 +28,6 @@ import upload
 sys.path.insert(0, 'libs')
 
 import conversion
-import downloading
 
 import os
 from google.appengine.ext.webapp import template
@@ -105,7 +104,6 @@ class What(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([('/', Home),
                                ('/upload', upload.Upload),
-                               ('/download/.*', downloading.Downloading),
                                ('/what-is-a-aco-file', What),
                                ('/statistics', statistics.Statistics),
                                ('/statistics-data', statistics.StatisticsData),
