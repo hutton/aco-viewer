@@ -24,7 +24,6 @@ import statistics
 
 import upload
 
-
 sys.path.insert(0, 'libs')
 
 import conversion
